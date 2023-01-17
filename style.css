@@ -1,0 +1,108 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: aqua;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.clock {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.8)
+}
+
+.number {
+    --rotation: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    transform: rotate(calc(var(--rotation) * 1deg));
+}
+
+.number > span {
+    display: inline-block;
+    transform: rotate(calc(var(--rotation) * -1deg));
+
+}
+
+.number::before {
+    content:'';
+    display: block;
+    width: 3px;
+    height: 10px;
+    background-color: black;
+    position: relative;
+    left: 50%;
+}
+
+.number.number-1 {--rotation: 30}
+.number.number-2 {--rotation: 60}
+.number.number-3 {--rotation: 90}
+.number.number-4 {--rotation: 120}
+.number.number-5 {--rotation: 150}
+.number.number-6 {--rotation: 180}
+.number.number-7 {--rotation: 210}
+.number.number-8 {--rotation: 240}
+.number.number-9 {--rotation: 270}
+.number.number-10 {--rotation: 300}
+.number.number-11 {--rotation: 330}
+
+
+.clock::after {
+    content: '';
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: black;
+    display: block;
+    z-index: 10;
+
+}
+
+.hand {
+    position: absolute;
+    background-color: black;
+    transform: translateY(-50%);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    --rotation: 0;
+    rotate: calc(var(--rotation) * 1deg);
+}
+
+.hand.hour-hand {
+    width: 8px;
+    height: 30%;
+}
+
+.hand.minute-hand {
+    width: 5px;
+    height: 45%;
+    z-index: 8;
+}
+
+.hand.second-hand {
+    width: 3px;
+    height: 45%;
+    background-color: red;
+    z-index: 9;
+}
+
+
